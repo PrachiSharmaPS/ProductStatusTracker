@@ -7,103 +7,16 @@ API for Tracking Product Status and Location
 ### Models
 - User Model
 ```
-{
-    username: { 
-        type: String, 
-        required: true 
-    },
-    email:{ //address
-        type: String, 
-        required: true, 
-        unique: true 
-    },
-    password: { 
-        type: String, 
-        required: true 
-    },
-    role: { 
-        type: String, 
-        enum: ['Admin', 'Customer'], 
-        default: "Customer",
-        required: true 
-    },
-    isDeleted:{
-        type: Boolean, 
-        default: false
-    }
-}
+{username: {type: String,required: true},email:{ //addresstype: String, required: true, unique: true},password: { type: String, required: true },role: { type: String, enum: ['Admin', 'Customer'], default: "Customer",required: true },isDeleted:{type: Boolean, default: false}}
 ```
 - Product Model
 ```
-{
-      productName: { 
-         type: String, 
-         required: true 
-      },
-      userId: { 
-         type: mongoose.Schema.Types.ObjectId, 
-         ref: 'userData',  
-         required: true 
-      },
-      description: { 
-         type: String 
-      },
-      deliveryAddress: { 
-         type: String, 
-      },
-      trackingNumber: { 
-        type: String
-      },
-      isDeleted:{
-         type: Boolean, 
-         default: false
-     },
-     quantity:{
-      type: Number,
-      default:1
-     },
-     price:{
-      type: Number
-     },
-   additionalInfo:{
-      type: String
-    },
-    }
+{productName: { type: String, required: true },userId: { type: mongoose.Schema.Types.ObjectId, ref: 'userData',  required: true },description: { type: String },deliveryAddress: { type: String, },trackingNumber: { type: String},isDeleted:{type: Boolean, default: false},quantity:{type: Number,default:1},price:{type: Number},additionalInfo:{type: String},}
 ```
 
 - Tracker Model
 ```
-{
-   productId: { 
-      type: mongoose.Schema.Types.ObjectId, 
-      ref: 'productDetails', 
-      required: true 
-  },
-   trackingNumber:{
-      type: String, 
-      required: true 
-   },
-   status: { 
-      type: String, 
-      enum: ['Created', 'In Manufacturing','Packaged','In Transit','Out for Delivery', 'Delivered','Returned','Cancled'], 
-      required: true 
-    },
-   additionalInfo:{
-      type: String
-    },
-   location: { 
-     type: String,
-     required: true 
-   },
-   timestamp: { 
-     type: Date, 
-     default: Date.now 
-  },
-  isDeleted:{
-   type: Boolean, 
-   default: false
-}
-}
+{productId: {type: mongoose.Schema.Types.ObjectId, ref: 'productDetails', required: true },trackingNumber:{type: String, required: true },status: { type: String, enum: ['Created', 'In Manufacturing','Packaged','In Transit','Out for Delivery'Delivered','Returned','Cancled'],required: true },additionalInfo:{type: String},location: { type: String,required: true },timestamp: { type: Date, default: Date.now },isDeleted:{type: Boolean, default: false}}
 ```
 
 To start the server, run the following command in your terminal:
