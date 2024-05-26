@@ -1,22 +1,47 @@
-
-
-
 # ProductStatusTracker
 API for Tracking Product Status and Location
+
+## Description
+This repository contains the API for tracking the status and location of products. It includes endpoints for user registration, login, creating products, updating products, deleting products, and managing tracking events.
+
+## Requirements
+- Node.js
+- MongoDB
+- npm (Node Package Manager)
+
+## Installation
+1. Clone the repository:
+    ```sh
+    git clone https://github.com/PrachiSharmaPS/ProductStatusTracker.git
+    ```
+2. Navigate to the project directory:
+    ```sh
+    cd ProductStatusTracker
+    ```
+3. Install the dependencies:
+    ```sh
+    npm install
+    ```
+
+## Start the Server
+To start the server, use the following command:
+```sh
+npm start
+```
 
 ### Models
 - User Model
 ```
-{username: {type: String,required: true},email:{ //addresstype: String, required: true, unique: true},password: { type: String, required: true },role: { type: String, enum: ['Admin', 'Customer'], default: "Customer",required: true },isDeleted:{type: Boolean, default: false}}
+{username: {type: String,required: true},email:{addresstype: String, required: true, unique: true},password: { type: String, required: true },role: { type: String, enum: ['Admin', 'Customer'], default: "Customer",required: true },isDeleted:{type: Boolean, default: false}}
 ```
 - Product Model
 ```
-{productName: { type: String, required: true },userId: { type: mongoose.Schema.Types.ObjectId, ref: 'userData',  required: true },description: { type: String },deliveryAddress: { type: String, },trackingNumber: { type: String},isDeleted:{type: Boolean, default: false},quantity:{type: Number,default:1},price:{type: Number},additionalInfo:{type: String},}
+{productName: { type: String, required: true },userId: { type: mongoose.Schema.Types.ObjectId, ref: 'userData', required: true },description: { type: String },deliveryAddress: { type: String, },trackingNumber: { type: String},isDeleted:{type: Boolean, default: false},quantity:{type: Number,default:1},price:{type: Number},additionalInfo:{type: String}}
 ```
 
 - Tracker Model
 ```
-{productId: {type: mongoose.Schema.Types.ObjectId, ref: 'productDetails', required: true },trackingNumber:{type: String, required: true },status: { type: String, enum: ['Created', 'In Manufacturing','Packaged','In Transit','Out for Delivery'Delivered','Returned','Cancled'],required: true },additionalInfo:{type: String},location: { type: String,required: true },timestamp: { type: Date, default: Date.now },isDeleted:{type: Boolean, default: false}}
+{ productId: { type: mongoose.Schema.Types.ObjectId, ref: 'productDetails', required: true }, trackingNumber: { type: String, required: true }, status: { type: String, enum: ['Created', 'In Manufacturing', 'Packaged', 'In Transit', 'Out for Delivery', 'Delivered', 'Returned', 'Canceled'], required: true }, additionalInfo: { type: String }, location: { type: String, required: true }, timestamp: { type: Date, default: Date.now }, isDeleted: { type: Boolean, default: false } }
 ```
 
 To start the server, run the following command in your terminal:
