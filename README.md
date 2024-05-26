@@ -1,8 +1,34 @@
-
-
-
 # ProductStatusTracker
 API for Tracking Product Status and Location
+
+## Description
+This repository contains the API for tracking the status and location of products. It includes endpoints for user registration, login, creating products, updating products, deleting products, and managing tracking events.
+
+## Requirements
+- Node.js
+- MongoDB
+- npm (Node Package Manager)
+
+## Installation
+1. Clone the repository:
+    ```sh
+    git clone https://github.com/PrachiSharmaPS/ProductStatusTracker.git
+    ```
+2. Navigate to the project directory:
+    ```sh
+    cd ProductStatusTracker
+    ```
+3. Install the dependencies:
+    ```sh
+    npm install
+    ```
+
+## Start the Server
+To start the server, use the following command:
+```sh
+npm start
+```
+
 
 ### Models
 - User Model
