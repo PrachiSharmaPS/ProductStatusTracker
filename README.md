@@ -1,20 +1,110 @@
+
+
+
 # ProductStatusTracker
 API for Tracking Product Status and Location
 
-This repository contains documentation for the following API endpoints:
+### Models
+- User Model
+```
+{
+    username: { 
+        type: String, 
+        required: true 
+    },
+    email:{ //address
+        type: String, 
+        required: true, 
+        unique: true 
+    },
+    password: { 
+        type: String, 
+        required: true 
+    },
+    role: { 
+        type: String, 
+        enum: ['Admin', 'Customer'], 
+        default: "Customer",
+        required: true 
+    },
+    isDeleted:{
+        type: Boolean, 
+        default: false
+    }
+}
+```
+- Product Model
+```
+{
+      productName: { 
+         type: String, 
+         required: true 
+      },
+      userId: { 
+         type: mongoose.Schema.Types.ObjectId, 
+         ref: 'userData',  
+         required: true 
+      },
+      description: { 
+         type: String 
+      },
+      deliveryAddress: { 
+         type: String, 
+      },
+      trackingNumber: { 
+        type: String
+      },
+      isDeleted:{
+         type: Boolean, 
+         default: false
+     },
+     quantity:{
+      type: Number,
+      default:1
+     },
+     price:{
+      type: Number
+     },
+   additionalInfo:{
+      type: String
+    },
+    }
+```
 
-1. [Register Endpoint](#register-endpoint)
-2. [Login Endpoint](#login-endpoint)
-3. [Create Product Endpoint](#create-product-endpoint)
-4. [Get Products Endpoint](#get-products-endpoint)
-5. [Update Product Endpoint](#update-product-endpoint)
-6. [Delete Product Endpoint](#delete-product-endpoint)
-7. [Create Tracking Event Endpoint](#create-tracking-event-endpoint)
-8. [Update Tracking Event Endpoint](#update-tracking-event-endpoint)
-9. [Get Tracking Event Endpoint](#get-tracking-event-endpoint)
-10. [Get Filtered Tracking Event Endpoint](#get-filtered-tracking-event-endpoint)
-11. [Delete Tracking Event Endpoint](#delete-tracking-event-endpoint)
----
+- Tracker Model
+```
+{
+   productId: { 
+      type: mongoose.Schema.Types.ObjectId, 
+      ref: 'productDetails', 
+      required: true 
+  },
+   trackingNumber:{
+      type: String, 
+      required: true 
+   },
+   status: { 
+      type: String, 
+      enum: ['Created', 'In Manufacturing','Packaged','In Transit','Out for Delivery', 'Delivered','Returned','Cancled'], 
+      required: true 
+    },
+   additionalInfo:{
+      type: String
+    },
+   location: { 
+     type: String,
+     required: true 
+   },
+   timestamp: { 
+     type: Date, 
+     default: Date.now 
+  },
+  isDeleted:{
+   type: Boolean, 
+   default: false
+}
+}
+```
 
 To start the server, run the following command in your terminal:
 `npm start`
