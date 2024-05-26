@@ -19,7 +19,7 @@ const createTrackingEvent=async function(req,res){
         if (!trackingCode) { return res.status(400).send({ status: false, message: "Tracking Code is required." }) }
 
        // Find product details by tracking code
-       let productDetail=await productModel.findOne({trackingNumber:trackingCode}).populate('userId')
+       let productDetail=await productModel.findOne({trackingNumber:trackingCode, isDeleted:false}).populate('userId')
        if(!productDetail){
         return res.status(404).send({status:false, message:"Invalid Tracking code"})
        }
